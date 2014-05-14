@@ -56,7 +56,7 @@ function SimpleWebRTC(opts) {
     WildEmitter.call(this);
 
     // our socket.io connection
-    connection = this.connection = io.connect(this.config.url);
+    connection = this.connection = io.connect(this.config.url, {'force new connection': true});
 
     connection.on('connect', function () {
         self.emit('connectionReady', connection.socket.sessionid);
